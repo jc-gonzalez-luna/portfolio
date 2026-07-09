@@ -15,6 +15,50 @@
 
     gtag('config', 'G-G448QSZFQG');
   </script>
+  <script>
+    // GitHub button clicks
+    document.querySelectorAll('a[href*="github.com"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        gtag('event', 'github_click', {
+          event_category: 'engagement',
+          event_label: btn.href
+        });
+      });
+    });
+
+    // Resume download
+    const resumeBtn = document.querySelector('a[href*="Resume"]');
+    if (resumeBtn) {
+      resumeBtn.addEventListener('click', () => {
+        gtag('event', 'resume_download', {
+          event_category: 'engagement',
+          event_label: 'Resume PDF'
+        });
+      });
+    }
+
+    // Hire Me button
+    const hireBtn = document.querySelector('.hire-me-btn');
+    if (hireBtn) {
+      hireBtn.addEventListener('click', () => {
+        gtag('event', 'hire_me_click', {
+          event_category: 'engagement',
+          event_label: 'Hire Me Button'
+        });
+      });
+    }
+
+    // Contact form submission
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', () => {
+        gtag('event', 'contact_form_submit', {
+          event_category: 'lead',
+          event_label: 'Contact Form'
+        });
+      });
+    }
+  </script>
 </head>
 
 
