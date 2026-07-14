@@ -131,40 +131,79 @@ body {
 .hero {
   background: linear-gradient(135deg, var(--bg), var(--bg-alt));
   text-align: center;
-  padding: 140px 20px 120px;
+  padding: 160px 20px 140px;
 }
 
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
+  animation: fadeUp 0.8s ease-out;
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--text-muted);
-  margin-bottom: 25px;
+  margin-bottom: 35px;
+  line-height: 1.6;
 }
 
-.hero-btn {
+.hero-btn-primary {
   display: inline-block;
   background: var(--accent);
   color: var(--bg);
-  padding: 12px 24px;
+  padding: 12px 26px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
+  margin-right: 12px;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.hero-btn:hover {
+.hero-btn-primary:hover {
   background: var(--accent-hover);
   transform: translateY(-3px);
+}
+
+.hero-btn-secondary {
+  display: inline-block;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 12px 26px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-btn-secondary:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-3px);
+}
+
+/* Subtle fade-up animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* =========================================================
@@ -176,6 +215,12 @@ section {
   margin: 60px auto;
   padding: 0 20px;
 }
+
+section:not(:last-of-type) {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding-bottom: 60px;
+}
+
 
 h2 {
   background: linear-gradient(90deg, var(--accent), var(--accent-dark));
@@ -194,23 +239,38 @@ h2 {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 14px;
+  padding: 0;
+  justify-content: flex-start;
 }
 
 .skills li {
-  background: var(--bg-alt);
+  flex: 0 1 auto;               /* prevents full-width stretching */
+  max-width: 100%;
+  white-space: normal;          /* allows wrapping */
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
   color: var(--text);
-  padding: 10px 15px;
-  border-radius: 6px;
+  padding: 12px 18px;
+  border-radius: 8px;
   font-size: 0.95rem;
-  transition: background 0.3s ease, transform 0.3s ease;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills li strong {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .skills li:hover {
   background: var(--accent);
   color: var(--bg);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.45);
 }
+
+
 
 /* =========================================================
    PROJECT GRID + CARDS
@@ -218,18 +278,18 @@ h2 {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .project-card {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, var(--card-bg), var(--bg-alt));
   backdrop-filter: blur(14px);
   border: 1px solid var(--card-border);
-  padding: 25px;
-  border-radius: 14px;
+  padding: 28px;
+  border-radius: 16px;
   box-shadow: 0 4px 18px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 body.light .project-card {
@@ -237,18 +297,38 @@ body.light .project-card {
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 28px rgba(56, 189, 248, 0.45);
+  border-color: var(--accent);
 }
 
 .project-card h3 {
   color: var(--accent);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
 }
 
 .project-card p {
   color: var(--text-muted);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.project-card .btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.project-card .btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-3px);
 }
 
 /* =========================================================
@@ -257,20 +337,20 @@ body.light .project-card {
 
 .btn {
   display: inline-block;
-  background-color: var(--accent);
+  background: var(--accent);
   color: var(--bg);
-  padding: 10px 15px;
+  padding: 12px 20px;
   border-radius: 6px;
-  text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .btn:hover {
-  background-color: var(--accent-hover);
-  box-shadow: 0 0 12px var(--accent);
+  background: var(--accent-hover);
   transform: translateY(-3px);
 }
+
 
 /* =========================================================
    CONTACT SECTION
@@ -377,9 +457,19 @@ body.light .contact-card {
    ========================================================= */
 
 .featured-container {
+  align-items: stretch;
+}
+
+.featured-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.featured-container {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  align-items: stretch;
 }
 
 .featured-text {
@@ -415,13 +505,19 @@ body.light .contact-card {
 
 .timeline {
   border-left: 2px solid var(--accent);
-  padding-left: 25px;
+  padding-left: 30px;
   position: relative;
+  margin-top: 20px;
 }
 
 .timeline-item {
   margin-bottom: 45px;
   position: relative;
+  transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(6px);
 }
 
 .timeline-dot {
@@ -430,10 +526,28 @@ body.light .contact-card {
   background: var(--accent);
   border-radius: 50%;
   position: absolute;
-  left: -25px;
-  top: 2px;
-  transform: translateY(4px);
-  box-shadow: 0 0 8px var(--accent);
+  left: -30px;
+  top: 6px;
+  box-shadow: 0 0 10px var(--accent);
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 6px var(--accent); }
+  50% { box-shadow: 0 0 14px var(--accent); }
+  100% { box-shadow: 0 0 6px var(--accent); }
+}
+
+.timeline-item h3 {
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.timeline-item p {
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* =========================================================
