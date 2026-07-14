@@ -1,9 +1,8 @@
 /* =========================================================
-   THEME VARIABLES
+   1. THEME VARIABLES
    ========================================================= */
 
 :root {
-  /* DARK MODE (default) */
   --bg: #0f172a;
   --bg-alt: #1e293b;
   --text: #e2e8f0;
@@ -17,7 +16,6 @@
   --footer-bg: rgba(255, 255, 255, 0.06);
 }
 
-/* LIGHT MODE */
 body.light {
   --bg: #f8fafc;
   --bg-alt: #e2e8f0;
@@ -32,15 +30,8 @@ body.light {
   --footer-bg: rgba(255, 255, 255, 0.8);
 }
 
-body.light .navbar {
-  background-color: var(--navbar-bg, rgba(255, 255, 255, 0.95));
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-}
-
-
 /* =========================================================
-   RESET + GLOBAL
+   2. RESET + GLOBAL
    ========================================================= */
 
 * {
@@ -58,11 +49,27 @@ body {
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease, filter 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+section {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+h2 {
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 /* =========================================================
-   NAVBAR
+   3. NAVBAR
    ========================================================= */
 
 .navbar {
@@ -73,9 +80,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
   backdrop-filter: blur(12px);
-  background-color: var(--navbar-bg, rgba(15, 23, 42, 0.8));
+  background-color: var(--navbar-bg);
   border-bottom: 1px solid var(--card-border);
   z-index: 999;
 }
@@ -105,7 +111,7 @@ body {
 }
 
 /* =========================================================
-   THEME TOGGLE BUTTON
+   4. THEME TOGGLE
    ========================================================= */
 
 #theme-toggle {
@@ -125,7 +131,7 @@ body {
 }
 
 /* =========================================================
-   HERO SECTION
+   5. HERO SECTION
    ========================================================= */
 
 .hero {
@@ -160,16 +166,20 @@ body {
   line-height: 1.6;
 }
 
-.hero-btn-primary {
+.hero-btn-primary,
+.hero-btn-secondary {
   display: inline-block;
-  background: var(--accent);
-  color: var(--bg);
   padding: 12px 26px;
   border-radius: 6px;
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-btn-primary {
+  background: var(--accent);
+  color: var(--bg);
   margin-right: 12px;
-  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .hero-btn-primary:hover {
@@ -178,23 +188,20 @@ body {
 }
 
 .hero-btn-secondary {
-  display: inline-block;
   border: 2px solid var(--accent);
   color: var(--accent);
-  padding: 12px 26px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .hero-btn-secondary:hover {
-  color: var(--accent-hover);
   border-color: var(--accent-hover);
+  color: var(--accent-hover);
   transform: translateY(-3px);
 }
 
-/* Subtle fade-up animation */
+/* =========================================================
+   6. ANIMATIONS
+   ========================================================= */
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -206,33 +213,24 @@ body {
   }
 }
 
-/* =========================================================
-   SECTIONS
-   ========================================================= */
-
-section {
-  max-width: 1000px;
-  margin: 60px auto;
-  padding: 0 20px;
+.fade-in,
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-section:not(:last-of-type) {
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding-bottom: 60px;
+.slide-up {
+  transform: translateY(40px);
 }
 
-
-h2 {
-  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
-  -webkit-background-clip: text;
-  color: transparent;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  font-weight: 600;
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =========================================================
-   SKILLS
+   7. SKILLS
    ========================================================= */
 
 .skills ul {
@@ -241,13 +239,9 @@ h2 {
   flex-wrap: wrap;
   gap: 14px;
   padding: 0;
-  justify-content: flex-start;
 }
 
 .skills li {
-  flex: 0 1 auto;               /* prevents full-width stretching */
-  max-width: 100%;
-  white-space: normal;          /* allows wrapping */
   background: linear-gradient(135deg, var(--bg-alt), var(--bg));
   color: var(--text);
   padding: 12px 18px;
@@ -270,10 +264,8 @@ h2 {
   box-shadow: 0 4px 12px rgba(56, 189, 248, 0.45);
 }
 
-
-
 /* =========================================================
-   PROJECT GRID + CARDS
+   8. PROJECT GRID + CARDS
    ========================================================= */
 
 .project-grid {
@@ -332,175 +324,107 @@ body.light .project-card {
 }
 
 /* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.btn {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--bg);
-  padding: 12px 20px;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-3px);
-}
-
-
-/* =========================================================
-   CONTACT SECTION
-   ========================================================= */
-
-.contact {
-  text-align: center;
-  margin-top: 100px;
-}
-
-.contact-intro {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  margin-bottom: 40px;
-}
-
-.contact-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
-}
-
-.contact-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 25px 30px;
-  width: 260px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-body.light .contact-card {
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-}
-
-.contact-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
-}
-
-.contact-card h3 {
-  color: var(--accent);
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-}
-
-.contact-link {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.contact-link:hover {
-  color: var(--accent);
-}
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer {
-  width: 100%;
-  text-align: center;
-  padding: 25px 0;
-  margin-top: 80px;
-
-  background: var(--footer-bg);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid var(--card-border);
-
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-
-  box-shadow: 0 -4px 18px rgba(0,0,0,0.3);
-}
-
-/* =========================================================
-   SCROLL REVEAL ANIMATIONS
-   ========================================================= */
-
-.fade-in,
-.slide-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.slide-up {
-  transform: translateY(40px);
-}
-
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================================================
-   FEATURED PROJECT
+   9. FEATURED PROJECT
    ========================================================= */
 
 .featured-container {
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 40px;
 }
 
 .featured-text {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-.featured-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  align-items: stretch;
+  gap: 16px;
+  text-align: left;
 }
 
-.featured-text {
-  flex: 2;
+.featured-text h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
 }
 
-.featured-list {
-  margin: 20px 0;
-  list-style: none;
+.featured-text p {
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
-.featured-list li {
-  margin-bottom: 10px;
+.featured-text strong {
+  color: var(--accent);
+  font-weight: 600;
 }
 
+.featured-text a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.featured-text a:hover {
+  color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* Side cards */
 .featured-visual {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 .featured-card {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
   border: 1px solid var(--card-border);
-  padding: 20px;
   border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
+  border-color: var(--accent);
+}
+
+.featured-card h4 {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.featured-card p {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Decorative accent line */
+.featured-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: glowLine 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowLine {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
 }
 
 /* =========================================================
-   EXPERIENCE TIMELINE
+   10. EXPERIENCE TIMELINE
    ========================================================= */
 
 .timeline {
@@ -551,26 +475,69 @@ body.light .contact-card {
 }
 
 /* =========================================================
-   TECH STACK
+   11. TECH STACK
    ========================================================= */
+
+.tech-stack {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
 }
 
 .tech-item {
-  background: var(--bg-alt);
-  padding: 15px;
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
+  color: var(--text);
+  padding: 18px 22px;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
+  letter-spacing: 0.3px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.tech-item i {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: var(--accent);
+  transition: color 0.3s ease;
+}
+
+.tech-item:hover {
+  background: var(--accent);
+  color: var(--bg);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.45);
+}
+
+.tech-item:hover i {
+  color: var(--bg);
 }
 
 /* =========================================================
-   TESTIMONIALS
+   12. TESTIMONIALS
    ========================================================= */
+
+#testimonials {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px 100px;
+  text-align: center;
+}
+
+#testimonials h2 {
+  margin-bottom: 30px;
+}
 
 .testimonial-grid {
   display: grid;
@@ -579,137 +546,333 @@ body.light .contact-card {
 }
 
 .testimonial-card {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
   border: 1px solid var(--card-border);
-  padding: 25px;
   border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  text-align: left;
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
+  border-color: var(--accent);
+}
+
+.testimonial-card p {
+  color: var(--text-muted);
   font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.testimonial-card h4 {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.testimonial-card::before {
+  content: "“";
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  font-size: 3rem;
+  color: var(--accent);
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 /* =========================================================
-   CERTIFICATIONS
+   13. CERTIFICATIONS
    ========================================================= */
+
+#certifications {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+  padding-bottom: 60px;
+}
 
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
+  margin-top: 30px;
 }
 
 .cert-card {
-  background: var(--card-bg);
+  position: relative;
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
   border: 1px solid var(--card-border);
-  padding: 25px;
   border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
+  border-color: var(--accent);
+}
+
+.cert-card h3 {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.cert-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cert-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 12px var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cert-card:hover::before {
+  opacity: 0.3;
 }
 
 /* =========================================================
-   STATS SECTION
+   14. STATS SECTION
    ========================================================= */
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 25px;
+  margin-top: 30px;
 }
 
 .stat-card {
-  background: var(--card-bg);
+  position: relative;
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
   border: 1px solid var(--card-border);
-  padding: 25px;
   border-radius: 12px;
+  padding: 30px 25px;
   text-align: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
+  border-color: var(--accent);
 }
 
 .stat-card h3 {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: var(--accent);
-}
-
-/* =========================================================
-   SCROLL TO TOP BUTTON
-   ========================================================= */
-
-.scroll-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  padding: 12px 16px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 0 12px var(--accent);
-  transition: transform 0.3s ease;
-}
-
-.scroll-top:hover {
-  transform: translateY(-4px);
-}
-
-/* =========================================================
-   ORIGINAL HIRE ME BUTTON (RESTORED)
-   ========================================================= */
-
-.hire-me-btn {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--bg);
-  padding: 14px 32px;
-  border-radius: 10px;
   font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-
-  /* Original glow */
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.45);
-
-  /* Original animation */
-  transition: background 0.3s ease,
-  transform 0.3s ease,
-  box-shadow 0.3s ease;
+  margin-bottom: 8px;
 }
 
-.hire-me-btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 26px rgba(56, 189, 248, 0.55);
+.stat-card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 12px var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card:hover::before {
+  opacity: 0.3;
+}
+
+/* =========================================================
+   15. WHAT I'M LOOKING FOR
+   ========================================================= */
+
+#looking-for {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+  padding-bottom: 60px;
+}
+
+#looking-for p {
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  line-height: 1.6;
 }
 
 .looking-list {
   list-style: none;
-  margin-top: 20px;
   padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .looking-list li {
-  margin-bottom: 10px;
-  background: var(--card-bg);
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
   border: 1px solid var(--card-border);
-  padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 12px 16px 12px 40px;
+  color: var(--text);
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
 }
 
+.looking-list li::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid var(--accent);
+}
+
+.looking-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.45);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* =========================================================
+   16. CONTACT SECTIONS (Enhanced)
+   ========================================================= */
+
+#contact,
+#contact-form {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px 60px;
+  text-align: center;
+}
+
+#contact h2,
+#contact-form h2 {
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.contact-intro {
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* Contact cards */
+
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.contact-card {
+  position: relative;
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
+  border-color: var(--accent);
+}
+
+.contact-card h3 {
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.contact-link {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 12px var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.contact-card:hover::before {
+  opacity: 0.3;
+}
+
+/* Contact form */
+
 .contact-form {
-  max-width: 600px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
+  align-items: stretch;
 }
 
 .contact-form input,
 .contact-form textarea {
-  padding: 14px;
+  padding: 14px 16px;
   border-radius: 8px;
   border: 1px solid var(--card-border);
-  background: var(--card-bg);
+  background: linear-gradient(135deg, var(--bg-alt), var(--bg));
   color: var(--text);
   font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+  transform: scale(1.01);
 }
 
 .contact-form textarea {
@@ -717,32 +880,135 @@ body.light .contact-card {
   resize: vertical;
 }
 
-.contact-form button {
+.contact-form .btn {
   align-self: flex-start;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#contact-form {
-  text-align: center;
+.contact-form .btn:hover {
+  background: var(--accent-hover, #38bdf8);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.45);
 }
 
-#contact-form h2 {
-  text-align: center;
-}
-
-#contact-form .contact-intro {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 30px;
-}
+/* =========================================================
+   RESUME DOWNLOAD BUTTON (Enhanced)
+   ========================================================= */
 
 .resume-download {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .resume-download .btn {
-  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: var(--bg);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 32px;
   font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume-download .btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.6);
+}
+
+/* Optional glowing border animation */
+.resume-download .btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 12px var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.resume-download .btn:hover::before {
+  opacity: 0.4;
+}
+
+
+/* =========================================================
+   17. FOOTER
+   ========================================================= */
+
+footer {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--card-border);
+  padding: 25px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+
+/* Subtle glow divider */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  opacity: 0.3;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* =========================================================
+   18. SCROLL TO TOP BUTTON
+   ========================================================= */
+
+#scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
   box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+  z-index: 9999;
+  display: none; /* JS toggles this */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 1;              /* ensure visible when displayed */
+  transform: translateY(0); /* no hidden offset */
+}
+
+#scroll-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.6);
 }
