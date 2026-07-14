@@ -1172,3 +1172,185 @@ footer::before {
   }
 }
 
+/* =========================================================
+   LIGHT MODE — WARM NEUTRAL (Option C)
+   ========================================================= */
+
+body.light {
+  --bg: #f7f4ef;            /* warm cream */
+  --bg-alt: #f2eee8;        /* soft beige */
+  --text: #2c2a27;          /* warm dark brown */
+  --text-muted: #6b645c;    /* muted warm gray */
+  --accent: #0ea5e9;        /* keep your blue for brand identity */
+  --accent-hover: #38bdf8;
+  --accent-dark: #0284c7;
+  --card-bg: rgba(255, 255, 255, 0.85); /* warm paper */
+  --card-border: rgba(0, 0, 0, 0.08);
+  --navbar-bg: rgba(255, 255, 255, 0.75);
+  --footer-bg: rgba(255, 255, 255, 0.7);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+body.light section {
+  background: transparent;
+}
+
+body.light h2 {
+  background: linear-gradient(90deg, #0284c7, #0ea5e9);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================
+   NAVBAR — Warm Frosted
+   ========================================================= */
+
+body.light .navbar {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* =========================================================
+   HERO — Soft Warm Gradient
+   ========================================================= */
+
+body.light .hero {
+  background: linear-gradient(135deg, #ffffff, #f7f4ef);
+}
+
+/* =========================================================
+   CARDS — Premium Paper + Soft Shadow
+   ========================================================= */
+
+body.light .project-card,
+body.light .contact-card,
+body.light .cert-card,
+body.light .stat-card,
+body.light .testimonial-card,
+body.light .featured-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+body.light .project-card:hover,
+body.light .contact-card:hover,
+body.light .cert-card:hover,
+body.light .stat-card:hover,
+body.light .testimonial-card:hover,
+body.light .featured-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+  border-color: var(--accent);
+}
+
+/* Warm glow overlay */
+body.light .project-card::before,
+body.light .contact-card::before,
+body.light .cert-card::before,
+body.light .stat-card::before,
+body.light .testimonial-card::before {
+  box-shadow: 0 0 14px rgba(14,165,233,0.25);
+}
+
+/* =========================================================
+   BUTTONS — Blue Accent on Warm Background
+   ========================================================= */
+
+body.light .btn,
+body.light .hero-btn-primary,
+body.light .contact-form .btn,
+body.light .resume-download .btn {
+  background: linear-gradient(135deg, #0284c7, #0ea5e9);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(14,165,233,0.25);
+}
+
+body.light .btn:hover,
+body.light .hero-btn-primary:hover,
+body.light .contact-form .btn:hover,
+body.light .resume-download .btn:hover {
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  box-shadow: 0 6px 20px rgba(14,165,233,0.35);
+  transform: translateY(-3px);
+}
+
+/* Secondary button */
+body.light .hero-btn-secondary {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+body.light .hero-btn-secondary:hover {
+  border-color: var(--accent-hover);
+  color: var(--accent-hover);
+}
+
+/* =========================================================
+   INPUTS — Warm Paper Fields
+   ========================================================= */
+
+body.light .contact-form input,
+body.light .contact-form textarea {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--text);
+}
+
+body.light .contact-form input:focus,
+body.light .contact-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(14,165,233,0.35);
+}
+
+/* =========================================================
+   TECH STACK — Warm Tiles
+   ========================================================= */
+
+body.light .tech-item {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+body.light .tech-item:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(14,165,233,0.35);
+}
+
+body.light .tech-item:hover i {
+  color: #fff;
+}
+
+/* =========================================================
+   FOOTER — Warm Neutral
+   ========================================================= */
+
+body.light footer {
+  background: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: blur(10px);
+}
+
+body.light footer::before {
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+/* =========================================================
+   SCROLL TO TOP — Warm Glow
+   ========================================================= */
+
+body.light #scroll-top {
+  box-shadow: 0 4px 12px rgba(14,165,233,0.35);
+}
+
+
