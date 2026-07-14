@@ -1012,3 +1012,163 @@ footer::before {
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(56, 189, 248, 0.6);
 }
+
+/* =========================================================
+   MOBILE RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 900px) {
+  /* Navbar */
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 120px 20px 100px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+  }
+
+  /* Sections */
+  section {
+    margin: 60px auto;
+    padding: 0 20px 40px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  /* Featured Project */
+  .featured-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .featured-text {
+    text-align: left;
+  }
+
+  .featured-visual {
+    flex-direction: column;
+  }
+
+  /* Skills */
+  .skills ul {
+    justify-content: center;
+  }
+
+  /* Project Cards */
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: 22px;
+  }
+
+  /* Testimonials */
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Certifications */
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Contact Cards */
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    width: 100%;
+  }
+
+  /* Contact Form */
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 12px 14px;
+  }
+
+  .contact-form .btn {
+    padding: 12px 20px;
+  }
+
+  /* Resume Button */
+  .resume-download {
+    margin-top: 20px;
+  }
+
+  .resume-download .btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: 20px 0;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Hero */
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Stats collapse to single column */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline-dot {
+    left: -22px;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+
+  /* Scroll-to-top button */
+  #scroll-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
